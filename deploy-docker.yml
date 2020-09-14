@@ -13,7 +13,7 @@
   - name: Install docker-container
     docker-container:
       name: mydockeransible
-      image: "sbabburu/santoshapp:{DOCKER_TAG}"
+      image: "sbabburu/santoshapp:{{DOCKER_TAG}}"
       state: started
       published_ports:
         - 0.0.0.0:8080:8080
