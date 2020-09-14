@@ -6,7 +6,7 @@
     yum:
       name: python-pip
       state:present
-  - name: Install Docker-py
+  - name: Install Docker-py for docker module
     pip:
       name: dockert-py
       state: present
