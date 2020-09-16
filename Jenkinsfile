@@ -64,7 +64,7 @@ pipeline{
                   kubeconfigId: 'kubeconfig',
                   configs: 'kube-deploy.yml',
                   enableConfigSubstitution: true
-                  
+                  )
             }
             
         }
