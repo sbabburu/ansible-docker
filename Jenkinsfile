@@ -47,14 +47,14 @@ pipeline{
             }
             
         }
-        stage('docker-deploy'){
+        /*stage('docker-deploy'){
             
             steps{
                 
                 ansiblePlaybook credentialsId: 'Managed-Node', disableHostKeyChecking: true, extras: "-e DOCKER_TAG=${DOCKER_TAG}", installation: 'ansible', inventory: 'dev.inv', playbook: 'deploy-docker.yml'
             }
             
-        }
+        }*/
         
         stage('k8's-deploy'){
             
