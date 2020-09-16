@@ -56,7 +56,7 @@ pipeline{
             
         }*/
         
-        stage('k8's-deploy'){
+        stage('kubernetes-deploy'){
             
             steps{
                 
