@@ -17,14 +17,23 @@ pipeline{
             
         }
         
-        stage('maven-build'){
+        /*stage('maven-build'){
             
             steps{
                 
                 sh 'mvn clean package'
             }
             
-        }
+        }*/
+        
+        stage("build and SonarQube analysis") {
+            
+            steps {
+              withSonarQubeEnv('SonarQube Server') {
+                sh 'mvn clean package sonar:sonar'
+              }
+            }
+          }
         
         stage('docker-build'){
             
@@ -56,7 +65,7 @@ pipeline{
             
         }*/
         
-        stage('kubernetes-deploy'){
+        /*stage('kubernetes-deploy'){
             
             steps{
                 
@@ -67,7 +76,7 @@ pipeline{
                   )
             }
             
-        }
+        }*/
         
     }
     
