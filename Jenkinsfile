@@ -17,23 +17,30 @@ pipeline{
             
         }
         
-        /*stage('maven-build'){
+        stage('maven-build'){
             
             steps{
                 
                 sh 'mvn clean package'
             }
             
-        }*/
+        }
         
-        stage("build and SonarQube analysis") {
+        stage("SonarQube analysis") {
             
             steps {
               withSonarQubeEnv('sonarqube server') {
-                sh 'mvn clean package sonar:sonar'
+                sh 'mvn sonar:sonar'
               }
             }
           }
+        
+        stage("Quality Gate") {
+            steps {
+              timeout(time: 60, unit: 'SECONDS') {
+                waitForQualityGate abortPipeline: true
+              }
+            }
         
         stage('docker-build'){
             
